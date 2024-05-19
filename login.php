@@ -39,7 +39,7 @@
                                 <button type="submit" class="button is-primary is-fullwidth">Iniciar sesión</button>
                             </div>
                             <p class="has-text-centered">
-                                ¿No tienes una cuenta? <a href="#">Regístrate aquí</a>
+                                ¿No tienes una cuenta? <a href="#">entrar</a>
                             </p>
                         </form>
                     </div>
