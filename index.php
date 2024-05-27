@@ -24,6 +24,7 @@
         // Incluir el contenido de otra página
         include 'menu.php';
         ?>
+        
                 <header>
             <!-- place navbar here -->
         </header>

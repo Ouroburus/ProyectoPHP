@@ -9,6 +9,10 @@
    
 </head>
 <body>
+    
+<?php
+include ("menu.php");
+?>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -36,6 +40,18 @@
                                 <label for="proveedor" class="form-label">Proveedor</label>
                                 <input type="text" class="form-control" id="proveedor" placeholder="Proveedor" name="proveedor" required>
                             </div>
+                                                    
+                                    <div class="form-group">
+                                        <label for="categoria">Categoría:</label>
+                                        <select class="form-control" id="categoria" name="categoria" required>
+                                            <option value="">Selecciona una categoría</option>
+                                            <option value="Electronica">Electrónica</option>
+                                            <option value="Ropa">Ropa</option>
+                                            <option value="Alimentos">Alimentos</option>
+                                            <option value="Hogar">Hogar</option>
+                                            <!-- Agrega más opciones según sea necesario -->
+                                        </select>
+                                    </div>
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="fecha_ingreso" class="form-label">Fecha de Ingreso</label>
@@ -46,6 +62,10 @@
                                     <input type="date" class="form-control" id="fecha_caducidad" name="fecha_caducidad" required>
                                 </div>
                             </div>
+                                <div class="form-group">
+                                <label for="descripcion">Descripción:</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
+                                </div>
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-primary">Enviar</button>
                             </div>

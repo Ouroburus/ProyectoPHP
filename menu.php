@@ -1,47 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menú Vertical Bootstrap con Color</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .menu-vertical {
-      background-color: #333; /* Fondo del menú en verde */
-      color: #f8f9fa; /* Color del texto en blanco */
-      height: 700px !important; /* Establece la altura del menú al 100% de su contenedor */
-      font-size: 18px; /* Tamaño de letra */
-    }
-    .menu-vertical .list-group-item {
-      border: none;
-      background-color: #333;
-    }
-    .menu-vertical .list-group-item:hover {
-      background-color: #f8f9fa ; /* Color de fondo al pasar el mouse */
-    }
-  </style>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Menú</title>
 </head>
 <body>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3 p-0">
-      <div class="list-group menu-vertical">
-        <a href="#" class="list-group-item list-group-item-action">formulario cliente</a>
-        <a href="#" class="list-group-item list-group-item-action">formulario empleado</a>
-        <a href="#" class="list-group-item list-group-item-action">formulario producto</a>
-        <a href="#" class="list-group-item list-group-item-action">formulario provedor</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">proyecto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="form_cliente.php">form cliente</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="form_empleado.php">formulario empleado</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Desplegable
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="form_producto.php">formulario producto</a></li>
+              <li><a class="dropdown-item" href="form_provedor.php">formulario provedor</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Desplegable tablas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="crear_fact.php">crear factura</a></li>
+              <li><a class="dropdown-item" href="tabla_empleado.php">vista empleado</a></li>
+              <li><a class="dropdown-item" href="tabla_invetario.php">vista inventario</a></li>
+              <li><a class="dropdown-item" href="tabla_usuario.php">vista usuario</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-   
-  </div>
-</div>
+  </nav>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

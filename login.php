@@ -16,6 +16,7 @@
     </style>
 </head>
 <body>
+
     <section class="hero is-fullheight">
         <div class="hero-body">
             <div class="container">
@@ -39,7 +40,7 @@
                                 <button type="submit" class="button is-primary is-fullwidth">Iniciar sesión</button>
                             </div>
                             <p class="has-text-centered">
-                                ¿No tienes una cuenta? <a href="#">entrar</a>
+                                ¿recuperar contraseña? <a href="#">entrar</a>
                             </p>
                         </form>
                     </div>

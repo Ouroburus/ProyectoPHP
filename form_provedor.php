@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-
+  
+<?php
+include ("menu.php");
+?>
   <div class="container mt-5">
     <div class="card bg-light w-50 mx-auto">
       <div class="card-header bg-primary text-white">
@@ -16,8 +19,8 @@
       <div class="card-body">
         <form>
           <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del proveedor">
+            <label for="nombre">Nombre de empresa</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre de empresa">
           </div>
           <div class="form-group">
             <label for="direccion">Dirección:</label>

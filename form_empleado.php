@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario de Empleado</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
-
+<?php
+include ("menu.php");
+?>
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
@@ -24,6 +27,20 @@
         </div>
 
         <div class="form-group">
+          <label for="tipo_documento">Tipo de Documento</label>
+          <select class="form-control" id="tipo_documento" name="tipo_documento" required>
+            <option value="dui">seleccione opcion</option>
+            <option value="pasaporte"></option>
+            <option value="licencia"></option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="numero_documento">Nº de documento</label>
+          <input type="text" class="form-control" id="numero_documento" placeholder="" name="" required>
+        </div>
+
+        <div class="form-group">
           <label for="telefono">Teléfono</label>
           <input type="tel" class="form-control" id="telefono" placeholder="Teléfono" name="telefono" required>
         </div>
@@ -34,18 +51,13 @@
         </div>
 
         <div class="form-group">
-          <label for="gmail">Gmail</label>
-          <input type="email" class="form-control" id="gmail" placeholder="Gmail" name="gmail" required>
+          <label for="gmail">Correo electronico</label>
+          <input type="email" class="form-control" id="gmail" placeholder="Correo electronico" name="gmail" required>
         </div>
-
+ 
         <div class="form-group">
           <label for="fecha_nacimiento">Fecha de Nacimiento</label>
           <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
-        </div>
-
-        <div class="form-group">
-          <label for="imagen">Imagen</label>
-          <input type="file" class="form-control-file" id="imagen" name="imagen">
         </div>
 
         <div class="form-group">
