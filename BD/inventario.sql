@@ -1,34 +1,38 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-05-2024 a las 02:10:59
--- Versión del servidor: 8.2.0
--- Versión de PHP: 8.2.13
+/*
+SQLyog Ultimate v11.11 (64 bit)
+MySQL - 8.2.0 : Database - inventario
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`inventario` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
---
--- Base de datos: `inventario`
---
+USE `inventario`;
 
--- --------------------------------------------------------
+/*Table structure for table `categoria` */
 
---
--- Estructura de tabla para la tabla `clientes`
---
+DROP TABLE IF EXISTS `categoria`;
+
+CREATE TABLE `categoria` (
+  `idcategoria` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`idcategoria`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `categoria` */
+
+/*Table structure for table `clientes` */
 
 DROP TABLE IF EXISTS `clientes`;
-CREATE TABLE IF NOT EXISTS `clientes` (
+
+CREATE TABLE `clientes` (
   `idcliente` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
@@ -41,14 +45,13 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   KEY `iddirecciones` (`iddirecciones`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `clientes` */
 
---
--- Estructura de tabla para la tabla `direcciones`
---
+/*Table structure for table `direcciones` */
 
 DROP TABLE IF EXISTS `direcciones`;
-CREATE TABLE IF NOT EXISTS `direcciones` (
+
+CREATE TABLE `direcciones` (
   `iddirecciones` int NOT NULL AUTO_INCREMENT,
   `pais` varchar(100) DEFAULT NULL,
   `departamento` varchar(200) DEFAULT NULL,
@@ -61,33 +64,47 @@ CREATE TABLE IF NOT EXISTS `direcciones` (
   PRIMARY KEY (`iddirecciones`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `direcciones` */
 
---
--- Estructura de tabla para la tabla `empleados`
---
+/*Table structure for table `documento` */
+
+DROP TABLE IF EXISTS `documento`;
+
+CREATE TABLE `documento` (
+  `iddocumen` int NOT NULL AUTO_INCREMENT,
+  `idtipo` int DEFAULT NULL,
+  `Ndocumento` int DEFAULT NULL,
+  PRIMARY KEY (`iddocumen`),
+  KEY `idtipo` (`idtipo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `documento` */
+
+/*Table structure for table `empleados` */
 
 DROP TABLE IF EXISTS `empleados`;
-CREATE TABLE IF NOT EXISTS `empleados` (
+
+CREATE TABLE `empleados` (
   `idempleado` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
+  `iddocumento` int DEFAULT NULL,
   `telefono` varchar(9) DEFAULT NULL,
   `direccion` varchar(300) DEFAULT NULL,
   `gmail` varchar(100) DEFAULT NULL,
   `fechaNacimiento` date DEFAULT NULL,
   `img` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`idempleado`)
+  PRIMARY KEY (`idempleado`),
+  KEY `iddocumento` (`iddocumento`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `empleados` */
 
---
--- Estructura de tabla para la tabla `factura`
---
+/*Table structure for table `factura` */
 
 DROP TABLE IF EXISTS `factura`;
-CREATE TABLE IF NOT EXISTS `factura` (
+
+CREATE TABLE `factura` (
   `idfactura` int NOT NULL AUTO_INCREMENT,
   `fechaEmision` date DEFAULT NULL,
   `idcliente` int DEFAULT NULL,
@@ -101,27 +118,25 @@ CREATE TABLE IF NOT EXISTS `factura` (
   KEY `iddireccion` (`iddireccion`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `factura` */
 
---
--- Estructura de tabla para la tabla `pago`
---
+/*Table structure for table `pago` */
 
 DROP TABLE IF EXISTS `pago`;
-CREATE TABLE IF NOT EXISTS `pago` (
+
+CREATE TABLE `pago` (
   `idpago` int NOT NULL AUTO_INCREMENT,
   `tipoPago` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idpago`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `pago` */
 
---
--- Estructura de tabla para la tabla `pedido`
---
+/*Table structure for table `pedido` */
 
 DROP TABLE IF EXISTS `pedido`;
-CREATE TABLE IF NOT EXISTS `pedido` (
+
+CREATE TABLE `pedido` (
   `idpedido` int NOT NULL AUTO_INCREMENT,
   `idproducto` int DEFAULT NULL,
   `cantidad` int DEFAULT NULL,
@@ -129,14 +144,13 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   KEY `idproducto` (`idproducto`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `pedido` */
 
---
--- Estructura de tabla para la tabla `producto`
---
+/*Table structure for table `producto` */
 
 DROP TABLE IF EXISTS `producto`;
-CREATE TABLE IF NOT EXISTS `producto` (
+
+CREATE TABLE `producto` (
   `idproducto` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(200) DEFAULT NULL,
   `cantidad` int DEFAULT NULL,
@@ -146,18 +160,19 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `fechaIngreso` date DEFAULT NULL,
   `fechaCaducidad` date DEFAULT NULL,
   `img` varchar(100) DEFAULT NULL,
+  `idcategoria` int DEFAULT NULL,
   PRIMARY KEY (`idproducto`),
-  KEY `idproveedor` (`idproveedor`)
+  KEY `idproveedor` (`idproveedor`),
+  KEY `fk_idcategoria` (`idcategoria`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `producto` */
 
---
--- Estructura de tabla para la tabla `proveedor`
---
+/*Table structure for table `proveedor` */
 
 DROP TABLE IF EXISTS `proveedor`;
-CREATE TABLE IF NOT EXISTS `proveedor` (
+
+CREATE TABLE `proveedor` (
   `idproveedor` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(200) DEFAULT NULL,
   `direccion` varchar(400) DEFAULT NULL,
@@ -167,14 +182,13 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   PRIMARY KEY (`idproveedor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `proveedor` */
 
---
--- Estructura de tabla para la tabla `telefono`
---
+/*Table structure for table `telefono` */
 
 DROP TABLE IF EXISTS `telefono`;
-CREATE TABLE IF NOT EXISTS `telefono` (
+
+CREATE TABLE `telefono` (
   `idtelefono` int NOT NULL AUTO_INCREMENT,
   `telcasa` varchar(9) DEFAULT NULL,
   `celular1` varchar(9) DEFAULT NULL,
@@ -182,14 +196,25 @@ CREATE TABLE IF NOT EXISTS `telefono` (
   PRIMARY KEY (`idtelefono`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+/*Data for the table `telefono` */
 
---
--- Estructura de tabla para la tabla `usuario`
---
+/*Table structure for table `tipo` */
+
+DROP TABLE IF EXISTS `tipo`;
+
+CREATE TABLE `tipo` (
+  `idtipo` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`idtipo`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+/*Data for the table `tipo` */
+
+/*Table structure for table `usuario` */
 
 DROP TABLE IF EXISTS `usuario`;
-CREATE TABLE IF NOT EXISTS `usuario` (
+
+CREATE TABLE `usuario` (
   `idusuario` int NOT NULL AUTO_INCREMENT,
   `USER` varchar(100) DEFAULT NULL,
   `PASSWORD` varchar(100) DEFAULT NULL,
@@ -197,8 +222,10 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`idusuario`),
   KEY `idempleado` (`idempleado`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*Data for the table `usuario` */
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
